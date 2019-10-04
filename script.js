@@ -8,5 +8,11 @@ if ('serviceWorker' in navigator) {
                 console.log('Deu erro ao registrar o ServiceWorker')
                 console.log(e)
             })
+
+        setTimeout(function(){
+            var img = new Image();
+            img.src = 'carro.jpg'
+            document.body.appendChild(img);
+        }, 3000)
     }
 }
