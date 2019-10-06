@@ -9,17 +9,18 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("push", event => {
     console.log('evento de PUSH')
-    console.log(event.data.text())
+
+    const data = JSON.parse(event.data.text())
 
     event.waitUntil(
         self.registration.showNotification(
-            'Titulo Qualquer', {
-                body: event.data.text(),
+            data.titulo, {
+                body: data.corpo,
                 icon: 'moto.jpg',
                 requireInteraction: true,
                 data: {
-                    id: '123',
-                    url: 'https://www.google.com.br'
+                    id: data.id,
+                    url: data.url
                 },
                 actions: [{
                         title: 'Arquivar',
