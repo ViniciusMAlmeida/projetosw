@@ -28,6 +28,18 @@ if ('serviceWorker' in navigator && 'Notification' in window) {
         navigator.serviceWorker.ready
             .then(function (reg) {
 
+                // reg.pushManager.getSubscription()
+                //     .then(function (subscribe) {
+
+                //         subscribe.unsubscribe()
+                //             .then(function () {
+                //                 console.log('Unsubscribe OK')
+                //             })
+                //             .catch(function () {
+                //                 console.log('Unsubscribe FAIL')
+                //             })
+                //     })
+
                 const appCode = 'BOOZiQnPKWxrbXvuNcTD6qJJYAfcVfd2LtRopMa1O-LC7gVwkNkRp6ATQvQsh1lxkOYUgWlUR9CC4npLYtV0hZA'
                 const options = {
                     userVisibleOnly: true,
