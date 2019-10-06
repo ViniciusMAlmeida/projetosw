@@ -15,7 +15,8 @@ self.addEventListener("push", event => {
         self.registration.showNotification(
             'Titulo Qualquer', {
                 body: event.data.text(),
-                icon: 'moto.jpg'
+                icon: 'moto.jpg',
+                requireInteraction: true
             }
         )
     )
