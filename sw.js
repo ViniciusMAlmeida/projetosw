@@ -20,7 +20,16 @@ self.addEventListener("push", event => {
                 data: {
                     id: '123',
                     url: 'https://www.google.com.br'
-                }
+                },
+                actions: [{
+                        title: 'Arquivar',
+                        action: 'arquivar'
+                    },
+                    {
+                        title: 'Marcar Como Lido',
+                        action: 'marcar_lido'
+                    }
+                ]
             }
         )
     )
@@ -30,8 +39,14 @@ self.addEventListener("push", event => {
 self.addEventListener('notificationclick', event => {
     event.notification.close()
 
-    console.log('Evento de clique')
-    console.log(event.notification.data)
+    const id = event.notification.data.id
 
-    clients.openWindow(event.notification.data.url)
+    if (event.action === 'arquivar') {
+        console.log(`ARQUIVANDO O EMAIL: ${id}`)
+    } else if (event.action === 'marcar_lido') {
+        console.log(`MARCADO COMO LIDO O EMAIL: ${id}`)
+    } else {
+        clients.openWindow(event.notification.data.url)
+    }
+
 })
