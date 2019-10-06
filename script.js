@@ -28,6 +28,7 @@ if ('serviceWorker' in navigator && 'Notification' in window) {
         navigator.serviceWorker.ready
             .then(function (reg) {
 
+                //para realizar o unsubscribe
                 // reg.pushManager.getSubscription()
                 //     .then(function (subscribe) {
 
@@ -50,18 +51,19 @@ if ('serviceWorker' in navigator && 'Notification' in window) {
                     .then(function (pushSubscription) {
                         console.log(JSON.stringify(pushSubscription))
 
-                        fetch(
-                                'http://meusite.com.br/notificacao/registro', {
-                                    method: 'POST',
-                                    body: JSON.stringify(pushSubscription)
-                                }
-                            )
-                            .then(function (res) {
-                                //Faz alguma coisa com a res
-                            })
-                            .catch(function (error) {
-                                //Faz alguma coisa com o erro
-                            })
+                        //registrar no backend
+                        // fetch(
+                        //         'http://meusite.com.br/notificacao/registro', {
+                        //             method: 'POST',
+                        //             body: JSON.stringify(pushSubscription)
+                        //         }
+                        //     )
+                        //     .then(function (res) {
+                        //         //Faz alguma coisa com a res
+                        //     })
+                        //     .catch(function (error) {
+                        //         //Faz alguma coisa com o erro
+                        //     })
                     })
                     .catch(function (error) {
                         console.log(error.message)
