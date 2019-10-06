@@ -1,22 +1,22 @@
 self.addEventListener("install", event => {
     console.log("Evento de install");
     self.skipWaiting();
-
-    event.waitUntil(
-        caches.open("teste-v1").then(function (cache) {
-            cache.add("moto.jpg");
-        })
-    );
 });
 
 self.addEventListener("activate", event => {
     console.log("Evento de activate");
 });
 
-self.addEventListener("fetch", event => {
-    let url = new URL(event.request.url);
+self.addEventListener("push", event => {
+    console.log('evento de PUSH')
+    console.log(event.data.text())
 
-    if (url.origin == location.origin && url.pathname === "/projetosw/carro.jpg") {
-        event.respondWith(caches.match("moto.jpg"));
-    }
-});
+    event.waitUntil(
+        self.registration.showNotification(
+            'Titulo Qualquer', {
+                body: event.data.text()
+            }
+        )
+    )
+
+})
