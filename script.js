@@ -49,6 +49,19 @@ if ('serviceWorker' in navigator && 'Notification' in window) {
                 reg.pushManager.subscribe(options)
                     .then(function (pushSubscription) {
                         console.log(JSON.stringify(pushSubscription))
+
+                        fetch(
+                                'http://meusite.com.br/notificacao/registro', {
+                                    method: 'POST',
+                                    body: JSON.stringify(pushSubscription)
+                                }
+                            )
+                            .then(function (res) {
+                                //Faz alguma coisa com a res
+                            })
+                            .catch(function (error) {
+                                //Faz alguma coisa com o erro
+                            })
                     })
                     .catch(function (error) {
                         console.log(error.message)
