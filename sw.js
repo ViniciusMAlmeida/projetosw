@@ -16,9 +16,22 @@ self.addEventListener("push", event => {
             'Titulo Qualquer', {
                 body: event.data.text(),
                 icon: 'moto.jpg',
-                requireInteraction: true
+                requireInteraction: true,
+                data: {
+                    id: '123',
+                    url: 'https://www.google.com.br'
+                }
             }
         )
     )
 
+})
+
+self.addEventListener('notificationclick', event => {
+    event.notification.close()
+
+    console.log('Evento de clique')
+    console.log(event.notification.data)
+
+    clients.openWindow(event.notification.data.url)
 })
