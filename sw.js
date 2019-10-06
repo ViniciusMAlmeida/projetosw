@@ -14,7 +14,8 @@ self.addEventListener("push", event => {
     event.waitUntil(
         self.registration.showNotification(
             'Titulo Qualquer', {
-                body: event.data.text()
+                body: event.data.text(),
+                icon: 'moto.jpg'
             }
         )
     )
